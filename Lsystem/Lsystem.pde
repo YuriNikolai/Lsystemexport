@@ -11,10 +11,10 @@
 // variables: A B
 // axiom: A
 // rules: (A → AB), (B → A)
+int ANGLEDEG = 10;
 
 int savenumber;
 float angle;
-int anglenumber;
 PGraphics alphaG;
 String axiom = "F";
 String sentence = axiom;
@@ -30,8 +30,8 @@ void setup(){
   rules = new Rule[1];
   rules[0] = new Rule('F', "FF+[+F-F-F]-[-F+F+F]");
   // rules[0] = new Rule('F', "FF+[+F-F-F]-[-F+F+F]");
-  anglenumber = 10;
-  angle = radians(random(anglenumber, anglenumber + 20));
+  
+  angle = radians(ANGLEDEG);
   // PGraphics object allows rendering on a transparent background
   alphaG = createGraphics(width,height, JAVA2D);
   println(axiom);
@@ -44,14 +44,16 @@ void draw(){
 
 void keyPressed() { if (key == ' ') {
        savenumber++;
-       output = "alpha" + anglenumber + "_" + savenumber + ".png";
+       output = "alpha" + ANGLEDEG + "_" + savenumber + ".png";
        alphaG.save(output);
-       println("saved as alpha" + anglenumber + "_"  + savenumber + ".png"); 
+       println("saved as alpha" + ANGLEDEG + "_"  + savenumber + ".png"); 
   }
 }
+int counter = 0;
 
-void mouseClicked() { if (mouseButton == RIGHT) {
-    println("click");
+void mouseClicked() { if (counter < 5 && mouseButton == RIGHT) {
+    counter++;
+    println("click " + counter);
     generate();
   }
 }
@@ -84,7 +86,7 @@ void generate(){
     }
   }
   sentence = next_sentence;
-  println(sentence);
+  //println(sentence);
   turtle();
 }
 
@@ -94,6 +96,7 @@ void turtle(){
   alphaG.resetMatrix(); 
   alphaG.background(255,0); //transparent on save
   alphaG.translate(width/2, height);
+  //alphaG.strokeWeight(2);
   alphaG.stroke(0, 200);
   for (int i = 0; i < sentence.length(); i++) {
     char current = sentence.charAt(i);
