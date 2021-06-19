@@ -7,6 +7,11 @@ This code is placed under the MIT license, as was the original one by Dan Shiffm
 
 **Controls**
 
-Right click to generate a new iteration. The code limits you to 5 iterations, but this limit can easily be changed at the top of the code (though further iterations can take quite a lot of time to render, or break the appearance of your tree completely depending on the angledeg variable).
+Right click to generate a new iteration. The code limits you to 5 iterations, but this limit can easily be changed at the top of the code (though further iterations can take quite a lot of time to render, or break the appearance of your tree completely depending on the ANGLEDEG constant).
 
-Spacebar to save. Your images will appear in the same folder as the .pde. Keep in mind the .pde needs to be in a folder with the same name as itself in order to work.
+Spacebar to save. Your images will appear in the same folder as the .pde file. Keep in mind the .pde needs to be in a folder with the same name as itself in order to work.
+
+Links:
+
+http://algorithmicbotany.org/papers/#abop
+https://en.wikipedia.org/wiki/L-system
