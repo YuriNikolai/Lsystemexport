@@ -13,5 +13,5 @@ Spacebar to save. Your images will appear in the same folder as the .pde file. K
 
 Links:
 
-http://algorithmicbotany.org/papers/#abop
-https://en.wikipedia.org/wiki/L-system
+* http://algorithmicbotany.org/papers/#abop
+* https://en.wikipedia.org/wiki/L-system
