@@ -4,16 +4,15 @@
 // Ported to processing by Max (https://github.com/TheLastDestroyer)
 // Alpha background, styling and save functionality by YuriNikolai
 
-// usually breaks on 6th click. Maybe the n of clicks supported can be improved?
-// angles to keep in mind: 10, 25, 45. 45 and 10 can render a 6th click after a long time,
-//25 breaks the image completely after the 6th. random between 10 and 30 seems to work better
+// angles to keep in mind: 10, 25, 45.
+//25 breaks the image completely after the 6th. random between 10 and 30 seems to work better for a near identical result.
 
 // variables: A B
 // axiom: A
 // rules: (A → AB), (B → A)
-int ANGLEDEG = 10;
+int ANGLEDEG = 25;
+int STROKEWEIGHT = 2;
 
-int savenumber;
 float angle;
 PGraphics alphaG;
 String axiom = "F";
@@ -26,7 +25,6 @@ Rule[] rules;
 void setup(){
   size(1024,1024);
   noSmooth();
-  savenumber = 0;
   rules = new Rule[1];
   rules[0] = new Rule('F', "FF+[+F-F-F]-[-F+F+F]");
   // rules[0] = new Rule('F', "FF+[+F-F-F]-[-F+F+F]");
@@ -38,20 +36,22 @@ void setup(){
   turtle();
 }
 
+
 void draw(){
   image(alphaG,0,0); //Allows us to see what's going on in the PGraphics
 }
 
+
 void keyPressed() { if (key == ' ') {
-       savenumber++;
-       output = "alpha" + ANGLEDEG + "_" + savenumber + ".png";
+       output = "alpha" + ANGLEDEG + "_" + counter + "_" + "stroke" + STROKEWEIGHT + ".png";
        alphaG.save(output);
-       println("saved as alpha" + ANGLEDEG + "_"  + savenumber + ".png"); 
+       println("saved as " + output); 
   }
 }
 int counter = 0;
 
-void mouseClicked() { if (counter < 5 && mouseButton == RIGHT) {
+
+void mouseClicked() { if (counter < 6 && mouseButton == RIGHT) {
     counter++;
     println("click " + counter);
     generate();
@@ -67,6 +67,7 @@ class Rule {
     b = _b;
   }
 }
+
 
 void generate(){
   len *= 0.6;
@@ -96,7 +97,7 @@ void turtle(){
   alphaG.resetMatrix(); 
   alphaG.background(255,0); //transparent on save
   alphaG.translate(width/2, height);
-  //alphaG.strokeWeight(2);
+  alphaG.strokeWeight(STROKEWEIGHT);
   alphaG.stroke(0, 200);
   for (int i = 0; i < sentence.length(); i++) {
     char current = sentence.charAt(i);
