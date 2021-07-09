@@ -1,6 +1,6 @@
 # Simple L-system exporter
 
-Note that this project is a work in progress and many improvements are still to be made, but the basic export functionality is already working.
+Note that this project still has a lot of room for improvements, but the basic export functionality is already working.
 
 This is a modification of the simple L-system "tree" generator by Daniel Shiffman:
 https://github.com/CodingTrain/website/blob/main/CodingChallenges/CC_016_LSystem/Processing/CC_016_LSystem/CC_016_LSystem.pde
